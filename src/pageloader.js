@@ -186,7 +186,7 @@ $.fn.pageloader = (options) => {
     window.onload = () => {
         setTimeout(() => {
             let ov = document.getElementById('overlay');
-            // document.body.removeChild(ov);
+            document.body.removeChild(ov);
             clearInterval(timer);
         }, 1000);
     }

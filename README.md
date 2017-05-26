@@ -1,5 +1,7 @@
 # Pageloader.js
 
+This plugins is written in ES6.
+
 ## HOW TO USE
 
 ### 1. Import jQuery
