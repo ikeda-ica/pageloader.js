@@ -19,3 +19,9 @@ $(document).ready(function() {
         loaderStyle: 'circle',
 });
 ```
+
+***
+
+## OPTIONS
+
+Now work in progress...
