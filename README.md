@@ -22,8 +22,10 @@ $(document).ready(function() {
 });
 ```
 
-***
 
 ## OPTIONS
 
-Now work in progress...
+backgroundColor: '#000',
+progressBarColor: '#fff',
+showPercentage: 'true', // bool
+loaderStyle: 'bar', // 'bar', 'circle'
