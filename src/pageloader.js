@@ -6,6 +6,7 @@ let elm = document.getElementsByTagName('img');
 let count = 0;
 
 $.fn.pageloader = (options) => {
+    console.log(options);
     let opts = $.extend({}, $.fn.pageloader.defaults, options);
     let bar = false,
         circle = false,
@@ -18,11 +19,8 @@ $.fn.pageloader = (options) => {
         i.src = url;
         i.addEventListener('load', () => {
             if (i.complete) {
-                console.log(i.src);
                 loaded++;
-                console.log(loaded + ':' + count);
                 if (count !== loaded) {}
-                console.log(loaded + ':' + count);
             }
         });
     }
@@ -32,14 +30,14 @@ $.fn.pageloader = (options) => {
         constructor() {
             let overlay = document.createElement('div');
             overlay.id = 'overlay';
-            overlay.style.background = '#111';
+            overlay.style.background = opts.backgroundColor;
             overlay.style.width = '100%';
             overlay.style.height = '100%';
             overlay.style.position = 'fixed';
             overlay.style.top = '0';
             overlay.style.left = '0';
             overlay.style.zIndex = '9999';
-            overlay.style.color = opts.backgroundColor;
+            overlay.style.color = '#fff';
             overlay.style.fontSize = '20px';
             overlay.style.textAlign = 'center';
             document.body.appendChild(overlay);
@@ -93,7 +91,7 @@ $.fn.pageloader = (options) => {
                 loaderBaseCircle.style.borderRadius = '50%';
                 loaderBaseCircle.style.zIndex = '9999';
                 loaderBaseCircle.style.color = '#000';
-                loaderBaseCircle.style.background = '#111';
+                loaderBaseCircle.style.background = opts.progressBarColor;
                 // loaderBaseCircle.style.backgroundImage = 'linear-gradient(to right, transparent 50%, #fff 0)';
                 loaderBaseCircle.style.textAlign = 'center';
 
@@ -123,7 +121,7 @@ $.fn.pageloader = (options) => {
                 loaderPoint.style.top = '-4px';
                 loaderPoint.style.left = '0';
                 loaderPoint.style.borderRadius = '50%';
-                loaderPoint.style.backgroundColor = '#fff';
+                loaderPoint.style.backgroundColor = opts.progressBarColor;
 
                 document.getElementById('overlay').appendChild(loaderBaseCircle);
                 document.getElementById('loader-basecircle').appendChild(loaderCircle);
@@ -150,6 +148,7 @@ $.fn.pageloader = (options) => {
                 processTxt.style.width = '40px';
                 processTxt.style.height = '20px';
                 processTxt.style.marginTop = '-10px';
+                if(opts.loaderStyle == 'bar'){processTxt.style.marginTop = '-30px';}
                 processTxt.style.marginLeft = '-20px';
                 processTxt.style.color = '#fff';
                 processTxt.style.fontSize = '20px';
@@ -178,7 +177,11 @@ $.fn.pageloader = (options) => {
                 style.circle();
                 break;
         }
-        style.percentage();
+        
+            console.log(opts.showPercentage);
+        if(opts.showPercentage === 'true'){
+            style.percentage();
+        }
     }
 
     let timer = setInterval(loaderfunc, 100);
@@ -186,7 +189,7 @@ $.fn.pageloader = (options) => {
     window.onload = () => {
         setTimeout(() => {
             let ov = document.getElementById('overlay');
-            document.body.removeChild(ov);
+//            document.body.removeChild(ov);
             clearInterval(timer);
         }, 1000);
     }
