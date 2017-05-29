@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 ## OPTIONS
 
-backgroundColor: '#000',
-progressBarColor: '#fff',
-showPercentage: 'true', // bool
-loaderStyle: 'bar', // 'bar', 'circle'
+backgroundColor: '#000',  
+progressBarColor: '#fff',  
+showPercentage: 'true', // bool  
+loaderStyle: 'bar', // 'bar', 'circle'  
